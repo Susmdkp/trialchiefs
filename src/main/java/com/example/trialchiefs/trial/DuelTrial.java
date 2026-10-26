@@ -59,7 +59,7 @@ public class DuelTrial extends Trial {
 			if (p.squaredDistanceTo(boss) < 6 * 6) {
 				p.damage(world, world.getDamageSources().mobAttack(boss), 8.0f);
 				p.takeKnockback(1.3, boss.getX() - p.getX(), boss.getZ() - p.getZ());
-				p.scheduleVelocityUpdate();
+   p.networkHandler.sendPacket(new net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket(p));
 			}
 		}
 		world.spawnParticles(ParticleTypes.EXPLOSION, boss.getX(), boss.getY() + 0.3, boss.getZ(), 8, 2.5, 0.2, 2.5, 0.0);
