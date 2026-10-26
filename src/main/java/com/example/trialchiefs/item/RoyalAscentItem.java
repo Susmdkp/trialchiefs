@@ -55,7 +55,7 @@ public class RoyalAscentItem extends Item {
 		AscentManager.start(sp, (ServerWorld) world, clear);
 
 		// Durabilidad = usos. stack.damage aplica Irrompibilidad y rompe el item al llegar a 0.
-		stack.damage(1, sp, LivingEntity.getSlotForHand(hand));
+		   stack.damage(1, sp, hand == Hand.MAIN_HAND ? net.minecraft.entity.EquipmentSlot.MAINHAND : net.minecraft.entity.EquipmentSlot.OFFHAND);
 		player.getItemCooldownManager().set(stack, COOLDOWN_TICKS);
 		if (!stack.isEmpty()) {
 			sp.sendMessage(Text.translatable("message.trialchiefs.ascent.used", stack.getMaxDamage() - stack.getDamage()), true);
